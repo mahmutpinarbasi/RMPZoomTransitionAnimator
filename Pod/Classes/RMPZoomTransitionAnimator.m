@@ -102,7 +102,7 @@
     // Transition source of image to move me to add to the last
     UIImageView *sourceImageView = [self.sourceTransition transitionSourceImageView];
     [containerView addSubview:sourceImageView];
-    
+    toVC.view.frame = [transitionContext finalFrameForViewController:toVC]; // added to fix navigation bar issue. mpinarbasi
     if (self.goingForward) {
         
         [fromVC beginAppearanceTransition:NO animated:YES];
