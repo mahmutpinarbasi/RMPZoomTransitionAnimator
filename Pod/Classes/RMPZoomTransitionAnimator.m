@@ -83,6 +83,7 @@
     UIViewController *fromVC = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
     UIViewController *toVC   = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
     UIView *containerView    = [transitionContext containerView];
+    toVC.view.frame = [transitionContext finalFrameForViewController:toVC]; // added to fix navigation bar issue. mpinarbasi
     [containerView addSubview:fromVC.view];
     [containerView addSubview:toVC.view];
     
@@ -102,7 +103,7 @@
     // Transition source of image to move me to add to the last
     UIImageView *sourceImageView = [self.sourceTransition transitionSourceImageView];
     [containerView addSubview:sourceImageView];
-    toVC.view.frame = [transitionContext finalFrameForViewController:toVC]; // added to fix navigation bar issue. mpinarbasi
+
     if (self.goingForward) {
         
         [fromVC beginAppearanceTransition:NO animated:YES];
@@ -142,6 +143,7 @@
                          }];
         
     } else {
+        
         [UIView animateWithDuration:kBackwardAnimationDuration
                               delay:0
                             options:UIViewAnimationOptionCurveEaseOut
@@ -170,6 +172,8 @@
                                                   // Remove the views from superviews to release the references
                                                   [alphaView removeFromSuperview];
                                                   [sourceImageView removeFromSuperview];
+                                                  
+                                                  
                                               }];
                          }];
     }
