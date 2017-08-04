@@ -83,7 +83,7 @@
     UIViewController *fromVC = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
     UIViewController *toVC   = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
     UIView *containerView    = [transitionContext containerView];
-    toVC.view.frame = [transitionContext finalFrameForViewController:toVC]; // added to fix navigation bar issue. mpinarbasi
+//    toVC.view.frame = [transitionContext finalFrameForViewController:toVC]; // added to fix navigation bar issue. mpinarbasi
     [containerView addSubview:fromVC.view];
     [containerView addSubview:toVC.view];
     
